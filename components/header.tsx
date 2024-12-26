@@ -32,6 +32,43 @@ export default function Header() {
           <div className="w-40" /> {/* Spacer for alignment */}
         </div>
       </div>
+      {/* Navigation */}
+      <nav className="border-t border-gray-200">
+        <ul className="flex items-center justify-center space-x-6 px-4 py-2 text-sm">
+          {[
+            "U.S.",
+            "World",
+            "Business",
+            "Arts",
+            "Lifestyle",
+            "Opinion",
+            "Audio",
+            "Games",
+            "Cooking",
+            "Wirecutter",
+            "The Athletic",
+          ].map((item) => (
+            <li key={item}>
+              <Link href="#" className="flex items-center py-2 hover:underline">
+                {item}
+                <svg
+                  className="ml-1 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
