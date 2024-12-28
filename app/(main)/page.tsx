@@ -1,10 +1,10 @@
-import Image from "next/image";
-import ArticleCard from "@/components/article-card";
+import ArticleCard from "@/old/article-card";
+import ArticleList from "@/components/article-list";
 
 export default function Home() {
   return (
     <div>
-      <ArticleCard />
+      <ArticleList />
     </div>
   );
 }
