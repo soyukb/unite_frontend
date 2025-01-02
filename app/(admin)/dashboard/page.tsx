@@ -7,7 +7,7 @@ import { ArticleCard } from "@/components/dashboard/article-card";
 import { ArticleForm } from "@/components/dashboard/article-form";
 import { DeleteDialog } from "@/components/dashboard/delete-dialog";
 import { SearchBar } from "@/components/dashboard/search-bar";
-import { withAuth } from "@/components/withAuth";
+import { withAuth } from "@/components/logic/withAuth";
 
 const SAMPLE_ARTICLES = [
   {

@@ -1,6 +1,6 @@
 "use client";
 import ArticleList from "@/components/main/article-list";
-import { withAuth } from "@/components/withAuth";
+import { withAuth } from "@/components/logic/withAuth";
 
 function Dashboard() {
   return (
