@@ -1,5 +1,0 @@
-const paths = {
-  home() {
-    return "/";
-  },
-};

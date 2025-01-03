@@ -1,6 +1,6 @@
 "use client";
-import ArticleList from "@/components/main/article-list";
-import ThreadDiscussion from "@/components/article/thread-discussion";
+
+import ThreadDiscussion from "./thread-discussion";
 import type { Thread } from "@/ThreadView/types/thread";
 
 const mockThread: Thread = {
@@ -116,11 +116,8 @@ const mockThread: Thread = {
   ],
 };
 
-export default function Home() {
-  return (
-    <div>
-      {/* <ArticleList /> */}
-      <ThreadDiscussion thread={mockThread} />
-    </div>
-  );
+function Page() {
+  return <ThreadDiscussion thread={mockThread} />;
 }
+
+export default Page;
