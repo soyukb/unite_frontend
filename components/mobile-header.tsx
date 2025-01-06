@@ -33,7 +33,7 @@ export default function MobileHeader() {
                 <div className="font-serif text-2xl">Pokemon Unite 速報</div>
               </SheetTitle>
             </SheetHeader>
-            <nav className="mt-8">
+            {/* <nav className="mt-8">
               <ul className="space-y-4">
                 {[
                   "U.S.",
@@ -71,7 +71,7 @@ export default function MobileHeader() {
                   </li>
                 ))}
               </ul>
-            </nav>
+            </nav> */}
           </SheetContent>
         </Sheet>
 
@@ -87,8 +87,8 @@ export default function MobileHeader() {
                 size="icon"
                 onClick={() => setIsSearchOpen(true)}
               >
-                <Search className="h-6 w-6" />
-                <span className="sr-only">Search</span>
+                {/* <Search className="h-6 w-6" /> */}
+                {/* <span className="sr-only">Search</span> */}
               </Button>
             )}
           </div>
@@ -96,7 +96,7 @@ export default function MobileHeader() {
       </div>
 
       {/* Search bar */}
-      {isSearchOpen && (
+      {/* {isSearchOpen && (
         <div className="flex items-center border-t border-gray-200 px-4 py-2">
           <Search className="h-5 w-5 text-gray-400" />
           <input
@@ -113,7 +113,7 @@ export default function MobileHeader() {
             <span className="sr-only">Close search</span>
           </Button>
         </div>
-      )}
+      )} */}
 
       {/* Date */}
       <div className="border-t border-gray-200 px-4 py-2 text-xs">
