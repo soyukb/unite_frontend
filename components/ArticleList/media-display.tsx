@@ -1,60 +1,62 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 interface MediaDisplayProps {
-  url: string
-  width: number
-  height: number
-  priority?: boolean
-  startTime?: number
-  endTime?: number
+  url: string;
+  media_type: string;
+  width: number;
+  height: number;
+  priority?: boolean;
+  startTime?: number;
+  endTime?: number;
 }
 
-export function MediaDisplay({ 
-  url, 
-  width, 
-  height, 
+export function MediaDisplay({
+  url,
+  media_type,
+  width,
+  height,
   priority = false,
   startTime = 0,
-  endTime = 10
+  endTime = 10,
 }: MediaDisplayProps) {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [imageError, setImageError] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
-  const fileType = url.split('.').pop()?.toLowerCase()
+  const fileType = url.split(".").pop()?.toLowerCase();
 
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
     const handleLoadedData = () => {
-      setIsLoaded(true)
+      setIsLoaded(true);
       if (startTime) {
-        video.currentTime = startTime
+        video.currentTime = startTime;
       }
-      video.play().catch(console.error)
-    }
+      video.play().catch(console.error);
+    };
 
     const handleTimeUpdate = () => {
       if (endTime && video.currentTime >= endTime) {
-        video.currentTime = startTime
-        video.play().catch(console.error)
+        video.currentTime = startTime;
+        video.play().catch(console.error);
       }
-    }
+    };
 
-    video.addEventListener('loadeddata', handleLoadedData)
-    video.addEventListener('timeupdate', handleTimeUpdate)
+    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("timeupdate", handleTimeUpdate);
 
     return () => {
-      video.removeEventListener('loadeddata', handleLoadedData)
-      video.removeEventListener('timeupdate', handleTimeUpdate)
-    }
-  }, [startTime, endTime])
+      video.removeEventListener("loadeddata", handleLoadedData);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, [startTime, endTime]);
 
-  if (fileType === 'mp4') {
+  if (media_type === "video") {
     return (
       <div className="relative">
         <video
@@ -68,14 +70,14 @@ export function MediaDisplay({
         >
           <source src={url} type="video/mp4" />
         </video>
-        
+
         {!isLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/10 rounded-lg">
             <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
           </div>
         )}
       </div>
-    )
+    );
   }
 
   return (
@@ -87,10 +89,9 @@ export function MediaDisplay({
         height={height}
         className="w-full sm:w-[200px] md:w-[300px] lg:w-[400px] aspect-[4/3] object-cover rounded-lg transition-transform group-hover:scale-[1.02]"
         priority={priority}
-        unoptimized={fileType === 'gif'}
+        unoptimized={fileType === "gif"}
         onError={() => setImageError(true)}
       />
     </div>
-  )
+  );
 }
-

@@ -128,6 +128,7 @@ function ArticleCardComponent({
         {article.media.length > 0 && (
           <MediaDisplay
             url={article.media[0].media_url}
+            media_type={article.media[0].media_type}
             width={400}
             height={300}
             priority={index === 0}

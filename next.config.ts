@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "preview.redd.it",
       },
+      {
+        protocol: "https",
+        hostname: "packaged-media.redd.it",
+      },
+      {
+        protocol: "https",
+        hostname: "example.com",
+      },
     ],
   },
 };

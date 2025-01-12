@@ -42,7 +42,9 @@ function ThreadHeaderComponent({ thread }: ThreadHeaderProps) {
         )}
         <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
           <MessageSquare className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
-          <span className="tabular-nums">コメント {thread.posts.length}件</span>
+          <span className="tabular-nums">
+            コメント {thread.comments.length}件
+          </span>
         </div>
         {/* {thread.category?.length > 0 && (
           <span className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs sm:text-sm">

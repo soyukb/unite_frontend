@@ -46,12 +46,12 @@ export default function LoginForm({
               className="w-full"
             />
           </div>
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <Checkbox id="remember" />
             <Label htmlFor="remember" className="text-sm font-normal">
               ログイン情報を保存する
             </Label>
-          </div>
+          </div> */}
           <Button
             onClick={handleLogin}
             type="submit"
@@ -59,14 +59,14 @@ export default function LoginForm({
           >
             ログイン
           </Button>
-          <div className="text-center">
+          {/* <div className="text-center">
             <Link
               href="#"
               className="text-sm text-gray-600 hover:text-gray-900"
             >
               パスワードをお忘れの方はこちら ＞
             </Link>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

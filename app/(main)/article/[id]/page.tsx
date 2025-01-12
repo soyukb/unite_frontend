@@ -1,6 +1,7 @@
 "use client";
 
 import ThreadDiscussion from "@/components/article/thread-discussion";
+import CommentSection from "@/components/comments/comment-section";
 import type { Thread } from "@/ThreadView/types/thread";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -74,6 +75,7 @@ export default function ArticlePage({ params }: PageProps) {
   return (
     <div>
       <ThreadDiscussion thread={thread} />
+      <CommentSection thread={thread} />
     </div>
   );
 }

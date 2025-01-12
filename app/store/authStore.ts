@@ -14,8 +14,7 @@ interface AuthState {
   login: (email: string, password: string) => Promise<LoginResult>;
   logout: () => void;
 }
-
-const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const useAuthStore = create<AuthState>()(
   persist(
@@ -26,7 +25,7 @@ const useAuthStore = create<AuthState>()(
       login: async (email: string, password: string) => {
         try {
           const response = await axios.post(
-            `${API_URL}/api/token/`,
+            `${API_BASE_URL}/token/`,
             {
               email: email,
               password: password,
