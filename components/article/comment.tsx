@@ -98,7 +98,7 @@ function CommentComponent({ post, index, posts }: CommentProps) {
               </div>
             )}
             <div className="mt-2">
-              <LikeButton initialLikes={post.likes} />
+              <LikeButton initialLikes={post.likes} postId={post.post_id} />
             </div>
           </div>
         </div>

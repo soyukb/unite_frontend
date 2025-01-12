@@ -8,6 +8,17 @@ export interface Category {
   category_name: string;
 }
 
+export interface Comment {
+  comment_id: number;
+  article: number;
+  content: string;
+  author: string | null;
+  created_at: string; // ISO 8601 formatted date string
+  parent_comment: number | null;
+  likes: number;
+  dislikes: number;
+}
+
 export interface Post {
   post_id: number;
   content: string;
@@ -28,6 +39,7 @@ export interface Thread {
   category: Category[];
   published_at: string | null;
   comment_count: number;
+  comments: Comment[];
   is_published: boolean;
   media: Media[];
   posts: Post[];

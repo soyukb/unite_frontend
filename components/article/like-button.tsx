@@ -5,35 +5,58 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ThumbsUp } from "lucide-react";
 import LoadingDots from "./loading-dots";
 import { cn } from "../../lib/utils";
+import { updatePostLikes } from "@/lib/api";
 
 interface LikeButtonProps {
   initialLikes: number;
+  postId: number;
 }
 
-function LikeButtonComponent({ initialLikes }: LikeButtonProps) {
+function LikeButtonComponent({ initialLikes, postId }: LikeButtonProps) {
   const [likes, setLikes] = useState(initialLikes);
   const [hasLiked, setHasLiked] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // const handleLike = useCallback(async () => {
+  //   if (isLoading) return;
+
+  //   setIsLoading(true);
+  //   await new Promise((resolve) => setTimeout(resolve, 300));
+
+  //   if (hasLiked) {
+  //     setLikes((prev) => prev - 1);
+  //     setHasLiked(false);
+  //   } else {
+  //     setLikes((prev) => prev + 1);
+  //     setHasLiked(true);
+  //     setShowPopup(true);
+  //     setTimeout(() => setShowPopup(false), 1000);
+  //   }
+
+  //   setIsLoading(false);
+  // }, [hasLiked, isLoading]);
   const handleLike = useCallback(async () => {
     if (isLoading) return;
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    const newLikes = hasLiked ? likes - 1 : likes + 1;
 
-    if (hasLiked) {
-      setLikes((prev) => prev - 1);
-      setHasLiked(false);
-    } else {
-      setLikes((prev) => prev + 1);
-      setHasLiked(true);
-      setShowPopup(true);
-      setTimeout(() => setShowPopup(false), 1000);
+    try {
+      const response = await updatePostLikes(postId, newLikes);
+      setLikes(response.likes);
+      setHasLiked(!hasLiked);
+
+      if (!hasLiked) {
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 1000);
+      }
+    } catch (error) {
+      console.error("Failed to update likes:", error);
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
-  }, [hasLiked, isLoading]);
+  }, [hasLiked, likes, postId, isLoading]);
 
   return (
     <div className="relative">
