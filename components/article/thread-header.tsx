@@ -44,9 +44,14 @@ function ThreadHeaderComponent({ thread }: ThreadHeaderProps) {
           <MessageSquare className="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true" />
           <span className="tabular-nums">コメント {thread.posts.length}件</span>
         </div>
-        {thread.category?.length > 0 && (
+        {/* {thread.category?.length > 0 && (
           <span className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs sm:text-sm">
             {thread.category.join(", ")}
+          </span>
+        )} */}
+        {thread.category?.length > 0 && (
+          <span className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs sm:text-sm">
+            {thread.category.map((cat) => cat.category_name).join(", ")}
           </span>
         )}
       </div>
